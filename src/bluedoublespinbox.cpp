@@ -1,0 +1,8 @@
+#include <bluedoublespinbox.h>
+
+BlueDoubleSpinBox::BlueDoubleSpinBox(QWidget* p)
+    : QDoubleSpinBox(p)
+{
+    setRange(0,1);
+    setSingleStep(0.1);
+}

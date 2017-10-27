@@ -1,0 +1,46 @@
+4 Code Requirements (85 points) 
+
+
+4.1 Add vertex to edge function (5 points) 
+Add a button to your GUI that allows the user to add a new vertex to your mesh, given one half-edge as input. The vertex should be at the midpoint of the edge. We recommend you implement this function before Catmull-Clark subdivision, since you can re-use it within the subdivision function. 
+
+
+4.2 Triangulate face function (10 points) 
+Add a button to your GUI that, given a single face in your mesh, triangulates the face (you may assume the face is convex). You might consider beginning with a function that only triangulates quadrangles, then expand that function once you confirm it works. 
+
+
+4.3 Catmull-Clark Subdivision (55 points) 
+Add a button to your GUI that allows the user to subdivide any given polygon mesh using Catmull-Clark subdivision. We recommend breaking up the subdivision into testable steps, such as adding the new centroids and edge vertices first, then moving the original vertices inward, then connecting these vertices with half-edges. Writing a separate function to "quadrangulate" a face given the new vertices may be helpful. 
+You'll know your subdivision is working properly if a cube converges to a spherical shape when you subdivide it multiple times. If you can subdivide the supplied cow OBJ file within 10 seconds, you've done very well! 
+Below are some expected vertex coordinates on a 1x1x1 cube after one iteration of subdivision: 
+The positions of your midpoints should be some permutation of (0.375, 0.375, 0)
+The positions of your centroids should be some permutation of (0.5, 0, 0)
+The new positions of your original vertices should be some permutation of (0.3055, 0.3055, 0.3055)
+
+
+4.4 Extrude face function (15 points) 
+Add a button to your GUI that allows the user to extrude a selected face along its geometric surface normal. Each edge of the face should become a quadrangle that connects the extruded face to the faces it originally touched. You may choose to hard-code the distance by which a face is extruded, as long as this distance is non-zero. 
+
+    
+    
+5 Extra Credit (Maximum 30 points) 
+
+
+5.1 Planarity test (5 points) 
+Write a planarity test (using a given epsilon tolerance) that checks a face and automatically calls your split face operation to triangulate it when it is no longer planar. 
+
+
+5.2 Sharp edges and vertices (15 points) 
+Allow the user to set specific faces, edges, and vertices as "sharp" before subdividing a mesh. The effect of "sharpness" depends on what has been tagged as sharp: 
+Face: All of the sharp face's vertices are treated as sharp during the subdivision process.
+Edge: When a vertex is added to a sharp edge, its position is simply the average of the sharp edge's endpoints. The resulting sub-edges are also marked as "sharp" so that further subdivisions retain a sharp appearance.
+Vertex: When a vertex is tagged as "sharp", it simply does not move during the smoothing process. However, if a non-sharp vertex is connected to two or more sharp edges, its behavior changes. If a vertex is connected to two sharp edges, its smoothed position is (0.75 * original) + (0.125 * edge_1_endpoint) + (0.125 * edge_2_endpoint). If it is connected to three or more sharp edges, it is treated as a "sharp" vertex.
+
+
+5.3 Semi-sharpness (10 points) 
+Allow the user to set a "sharpness" value between 0 and 1 for any mesh component that has been tagged as sharp. This value determines how "sharp" that component will be after subdivision, which is a simple interpolation of its fully sharp position and its fully smooth position. 
+
+
+
+5.4 Custom feature (Up to 30 points) 
+Decide upon some other mesh alteration operation, such as inserting an edge loop or beveling an edge, and implement it. Your feature does not need to be one described in the lecture slides. If you are unsure how valuable your feature will be, you may email us with a description of what you want to implement. 
