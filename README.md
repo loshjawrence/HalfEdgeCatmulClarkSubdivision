@@ -10,7 +10,7 @@ Project 6 - From scratch implementations of Half Edge data structure, manipulati
 **Face Triangulation, extrusion and catmul-clark subdivision**<br />
 * [Half Edge Manipulation then Subdivision video link](https://vimeo.com/240084111)
 * Low Quality GIF:
-![](videos/triangulateExtrudeSubdivide.gif)
+![](videos/triangulate.gif)
 
 **Sharpness with Subdivision**<br />
 * [Sharpness with Subdivision video link](https://vimeo.com/240084108)
